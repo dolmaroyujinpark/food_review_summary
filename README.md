@@ -37,6 +37,28 @@
 
 ---
 
+### **Project 2**  
+- **data/**  
+  - Project 2에서 사용할 데이터셋.  
+
+- **src2/**  
+  - __init__.py : 패키지 초기화 파일.  
+  - generate.py : 요약 결과를 생성 및 테스트하는 스크립트.  
+  - generate_input_ver.py : 입력 데이터를 활용한 요약 결과 생성.  
+  - main.py : Sparse Transformer 모델 학습 및 실행 코드.  
+  - prepare_spm.py : 토큰화 및 전처리 관련 스크립트.  
+  - README.md : 프로젝트 2 설명 문서.  
+  - requirements.txt : 필요한 라이브러리 목록.  
+  - transformer_weights.pth : 학습된 Sparse Transformer 모델 가중치 파일.  
+
+- **static/**  
+  - index.html : 웹 애플리케이션용 HTML 파일.  
+
+- **app.py**  
+  - 웹 애플리케이션 실행 파일로, **Project 1**과 **Project 2**의 모델을 비교하여 요약문을 생성합니다.  
+
+---
+
 ## **📌 실행 방법**
 
 ### **1️⃣ 필수 라이브러리 설치**
