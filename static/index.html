@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음식점 리뷰 요약기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥗🌯🥘 음식점 리뷰 요약기 🍔🌭🫔</h1>
+        <textarea id="inputText" rows="10" cols="50" placeholder="요약할 텍스트를 입력하세요..."></textarea><br>
+        <button id="summarizeButton">요약하기</button>
+
+        <div class="results">
+            <h2>📌 요약 결과:</h2>
+            <p id="t5SummaryResult">-</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('summarizeButton').addEventListener('click', () => {
+            const text = document.getElementById('inputText').value;
+
+            if (!text) {
+                alert('요약할 텍스트를 입력하세요!');
+                return;
+            }
+
+            // T5 요약 요청
+            fetch('/summarize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('t5SummaryResult').textContent = "⚠️ 오류: " + data.error;
+                } else {
+                    document.getElementById('t5SummaryResult').textContent = data.summary;
+                }
+            })
+            .catch(error => {
+                console.error('요약 오류:', error);
+                document.getElementById('t5SummaryResult').textContent = "⚠️ 요약 중 문제가 발생했습니다.";
+            });
+        });
+    </script>
+</body>
+</html>
