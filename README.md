@@ -17,6 +17,25 @@
    - Transformer 구조를 직접 구현한 Sparse Transformer 모델입니다.
    - **현재 웹 애플리케이션에서는 사용되지 않으며, 참고용으로 유지됩니다.**
 
+## **파일 구조**  
+
+### **Project 1**  
+- **data/**  
+  - 1217_data.json : 학습용 데이터셋.  
+  - test_final.json : 테스트용 데이터셋.  
+
+- **models/**  
+  - new_trained_model/ : 새롭게 학습된 최종 모델 파일이 저장된 디렉토리.  
+  - trained_model_1216part1/ : 이전 학습된 모델 파일.  
+
+- **src1/**  
+  - dataset.py : 데이터셋 로드 및 처리 코드.  
+  - preprocess.py : 데이터 전처리 스크립트.  
+  - train.py : KoT5 모델 학습 코드.  
+  - evaluate1.py, evaluate2.py : 요약 모델 성능을 평가하는 스크립트.  
+  - utils.py : 유틸리티 함수 모음.  
+
+---
 
 ## **📌 실행 방법**
 
